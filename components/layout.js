@@ -30,7 +30,7 @@ function Layout({ children, home }) {
               <div className="pt-6 text-center space-y-4">
                 <blockquote>
                   <p className="text-lg font-semibold">
-                    “Tailwind CSS is the only framework that I've seen scale
+                    “Tailwind CSS is the only framework that I&apos;ve seen scale
                     on large teams.It’s easy to customize, adapts to any design,
                     and the build size is tiny.”
                   </p>
@@ -58,7 +58,7 @@ function Layout({ children, home }) {
               <div className="pt-6 text-center space-y-4">
                 <blockquote>
                   <p className="text-lg font-semibold">
-                    “Tailwind CSS is the only framework that I've seen scale
+                    “Tailwind CSS is the only framework that I&apos;ve seen scale
                     on large teams.It’s easy to customize, adapts to any design,
                     and the build size is tiny.”
                   </p>
