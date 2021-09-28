@@ -5,8 +5,7 @@ import Paginate from '../components/paginate'
 import Date from '../components/date'
 import { getSortedPostsData } from '../lib/posts'
 
-
-export default function Home({ allPostsData }) {
+export default function Home({ allPostsData, postsPages, page }) {
   return (
     <Layout home>
       <div>
@@ -25,7 +24,7 @@ export default function Home({ allPostsData }) {
                 <div className="md:flex-shrink-0">
                   <img className="h-48 w-full object-cover md:w-48" src={thumb} alt="Man looking at item at a store" />
                 </div>
-                <div className="p-8">
+                <div className="pl-8 pr-8 pt-4 pb-4 max-h-48 overflow-hidden">
                   <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold"><Date dateString={date} /></div>
                   <Link href="/posts/[id]" as={`/posts/${id}`}>
                   <a className="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{title}</a>
@@ -38,17 +37,22 @@ export default function Home({ allPostsData }) {
             </li>
             ))}
           </ul>
-          <Paginate></Paginate>
+          <Paginate prev={postsPages.prev} next={postsPages.next} page={page}></Paginate>
         </section>
       </div>
     </Layout>
   )
 }
 export async function getStaticProps() {
-  const allPostsData = await getSortedPostsData()
+  const page = 1
+  const allPostsData = await getSortedPostsData(page)
+  const postsPages = {prev: false, next: true}
   return {
     props: {
-      allPostsData
+      allPostsData,
+      postsPages,
+      page
+      // postsPages
     }
   }
 }

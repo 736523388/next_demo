@@ -1,25 +1,41 @@
 /* This example requires Tailwind CSS v2.0+ */
+import Link from 'next/link'
 
-export default function Paginate() {
+export default function Paginate({ page, prev, next }) {
+
   return (
     <div className="bg-white px-4 py-3 flex items-center justify-between border-gray-200 sm:px-6 mt-10">
       {/* <div className="flex-1 flex justify-between sm:hidden"> */}
       <div className="flex-1 flex justify-center">
-        <a
-          href="#"
-          className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+        {/* {prev && (
+          <Link href="/page/[id]" as={`/page/${page - 1}`}><a
+            className="disabled relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+          >
+            上一页
+          </a></Link>
+        )} */}
+        {prev ? (
+          page == 2 ? <Link href="/"><a
+          className="disabled relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
         >
-          Previous
-        </a>
-        <a
-          href="#"
-          className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-        >
-          Next
-        </a>
+          上一页
+        </a></Link> : <Link href="/page/[id]" as={`/page/${page - 1}`}><a
+            className="disabled relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+          >
+            上一页
+          </a></Link>
+        ):''}
+        {next && (
+          <Link href="/page/[id]" as={`/page/${page + 1}`}><a
+            className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+          >
+            下一页
+          </a></Link>
+        )}
+
       </div>
       <div className="hidden">
-      {/* <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between"> */}
+        {/* <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between"> */}
         <div>
           <p className="text-sm text-gray-700">
             Showing <span className="font-medium">1</span> to <span className="font-medium">10</span> of{' '}
